@@ -1,5 +1,14 @@
 $black: #000000;
 
 body{
-  background: pink;
+  background: beige;
+}
+
+h1{
+  color: white;
+}
+
+h1:hover{
+  color: red;
+  transition: color .5s;
 }

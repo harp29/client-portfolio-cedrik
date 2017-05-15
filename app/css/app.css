@@ -1,3 +1,13 @@
 body {
-  background: pink;
+  background: beige;
+}
+
+h1 {
+  color: white;
+}
+
+h1:hover {
+  color: red;
+  -webkit-transition: color .5s;
+  transition: color .5s;
 }
