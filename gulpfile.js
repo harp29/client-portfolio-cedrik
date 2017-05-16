@@ -2,9 +2,11 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
+var browserify = require('gulp-browserify');
 var autoprefixer = require('gulp-autoprefixer');
 var clean = require('gulp-clean');
 var concat = require('gulp-concat');
+var merge = require('merge-stream');
 
 //src folder/directory
 var SOURCEPATHS = {
@@ -40,16 +42,23 @@ gulp.task('clean-scripts', function(){
 
 //sass/scss task
 gulp.task('sass', function(){
-  return gulp.src(SOURCEPATHS.sassSource)
+  var bootstrapCSS = gulp.src('./node_modules/bootstrap/dist/css/bootstrap.css');
+  var sassFiles;
+
+
+  sassFiles =  gulp.src(SOURCEPATHS.sassSource)
     .pipe(autoprefixer())
     .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-    .pipe(gulp.dest(APPPATH.css))
+    return merge(sassFiles, bootstrapCSS)
+      .pipe(concat('app.css'))
+      .pipe(gulp.dest(APPPATH.css));
 });
 
 //copy scripts
 gulp.task('scripts', ['clean-scripts'], function(){
   gulp.src(SOURCEPATHS.jsSource)
   .pipe(concat('main.js'))
+  .pipe(browserify())
   .pipe(gulp.dest(APPPATH.js))
 })
 
