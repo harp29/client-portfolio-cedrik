@@ -7,13 +7,16 @@ var autoprefixer = require('gulp-autoprefixer');
 var clean = require('gulp-clean');
 var concat = require('gulp-concat');
 var merge = require('merge-stream');
+var newer = require('gulp-newer');
+var imagemin = require('gulp-imagemin');
 
 //src folder/directory
 var SOURCEPATHS = {
 
   sassSource : 'src/scss/*.scss',
   htmlSource : 'src/*.html',
-  jsSource   : 'src/js/**'
+  jsSource   : 'src/js/**',
+  imageSource  : 'src/img/**'
 
 }
 
@@ -23,7 +26,8 @@ var APPPATH = {
   root: 'app/',
   css : 'app/css',
   js : 'app/js',
-  fonts : 'app/fonts'
+  fonts : 'app/fonts',
+  img : 'app/img'
 
 }
 
@@ -54,6 +58,14 @@ gulp.task('sass', function(){
       .pipe(concat('app.css'))
       .pipe(gulp.dest(APPPATH.css));
 });
+
+//copy new image into directory/folder, auto minify images
+gulp.task('images', function(){
+  return gulp.src(SOURCEPATHS.imageSource)
+    .pipe(newer(APPPATH.img))
+    .pipe(imagemin())
+    .pipe(gulp.dest(APPPATH.img));
+})
 
 //move fonts - glyphicons
 gulp.task('moveFonts', function(){
@@ -88,7 +100,7 @@ gulp.task('serve', ['sass'], function(){
 
 //faster sass processing on the fly with - watch
 gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'clean-scripts',
-'scripts', 'moveFonts'], function(){
+'scripts', 'moveFonts', 'images'], function(){
   gulp.watch([SOURCEPATHS.sassSource], ['sass']);
   gulp.watch([SOURCEPATHS.htmlSource], ['copy']);
   gulp.watch([SOURCEPATHS.jsSource], ['scripts']);
