@@ -8,4 +8,4 @@ My Web Workflow with NPM, SASS, Gulp, and more
     - [git](http://git-scm.com/)
     - [gulp](http://gulpjs.com/)
 
-3. - Run 'npm install ' to the project dependencies    
+3. - Run 'npm install ' to install the project dependencies    
