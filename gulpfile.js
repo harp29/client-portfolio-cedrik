@@ -10,6 +10,9 @@ var merge = require('merge-stream');
 var newer = require('gulp-newer');
 var imagemin = require('gulp-imagemin');
 var injectPartials = require('gulp-inject-partials');
+var minify = require('gulp-minify');
+var rename = require('gulp-rename');
+var cssMin = require('gulp-cssmin');
 
 //src folder/directory
 var SOURCEPATHS = {
@@ -47,20 +50,6 @@ gulp.task('clean-scripts', function(){
   .pipe(clean());
 });
 
-//sass/scss task
-gulp.task('sass', function(){
-  var bootstrapCSS = gulp.src('./node_modules/bootstrap/dist/css/bootstrap.css');
-  var sassFiles;
-
-
-  sassFiles =  gulp.src(SOURCEPATHS.sassSource)
-    .pipe(autoprefixer())
-    .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-    return merge(sassFiles, bootstrapCSS)
-      .pipe(concat('app.css'))
-      .pipe(gulp.dest(APPPATH.css));
-});
-
 //copy new image into directory/folder, auto minify images
 gulp.task('images', function(){
   return gulp.src(SOURCEPATHS.imageSource)
@@ -83,6 +72,35 @@ gulp.task('scripts', ['clean-scripts'], function(){
   .pipe(gulp.dest(APPPATH.js))
 })
 
+/** Production Tasks **/
+//minify scripts
+gulp.task('compress', function(){
+  gulp.src(SOURCEPATHS.jsSource)
+  .pipe(concat('main.js'))
+  .pipe(browserify())
+    .pipe(minify())
+  .pipe(gulp.dest(APPPATH.js))
+});
+
+//sass/scss task
+gulp.task('compresscss', function(){
+  var bootstrapCSS = gulp.src('./node_modules/bootstrap/dist/css/bootstrap.css');
+  var sassFiles;
+
+
+  sassFiles =  gulp.src(SOURCEPATHS.sassSource)
+    .pipe(autoprefixer())
+    .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+    return merge(sassFiles, bootstrapCSS)
+      .pipe(concat('app.css'))
+      .pipe(cssMin())
+      .pipe(rename({suffix: '.min'}))
+      .pipe(gulp.dest(APPPATH.css));
+});
+
+/** End of Production Tasks **/
+
+//injectPartials Html
 gulp.task('html', function(){
   return gulp.src(SOURCEPATHS.htmlSource)
   .pipe(injectPartials())
