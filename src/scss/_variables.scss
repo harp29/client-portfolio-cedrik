@@ -1,11 +1,15 @@
 $white:          #FFFFFF;
 $blue:           #0076A3;
 $dark-blue:      darken($blue, 10);
-$yellow:         #FFBA00;
+$yellow:         #000;
 $green:          #548C27;
 $red:            #FE2D28;
 $black:          #000000;
 
+.test{
+  color: purple;
+
+}
 $bg-color: $blue;
 $text-color:  $black;
 
