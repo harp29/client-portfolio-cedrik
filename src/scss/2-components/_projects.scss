@@ -1,0 +1,64 @@
+@import "../4-helpers/mixins";
+
+.project{
+  position: relative;
+  width: 100%;
+  height: 475px;
+  margin: 6.25rem 0;
+  cursor: pointer;
+
+  &__overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    background-color: #000;
+    opacity: .2;
+    transition: opacity .3s ease-in;
+  }
+  &:hover &__overlay{
+    opacity: .7;
+  }
+
+  &__module{
+    opacity: 1;
+    color: $text-color--white;
+    width: 50%;
+    height: max-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) skewY(0deg);
+    z-index: 3;
+
+    @media screen and (min-width: 1024px) {
+      width: 30%;
+    }
+
+    .project-task{
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  &--1{
+    @include background('../../img/selected/img1.jpg');
+  }
+
+  &--2{
+    @include background('../../img/selected/img2.jpg');
+  }
+
+  &--3{
+    @include background('../../img/selected/img3.jpg');
+  }
+
+  &--4{
+    @include background('../../img/selected/img4.jpg');
+  }
+
+  &--5{
+    @include background('../../img/selected/img5.jpg');
+  }
+}

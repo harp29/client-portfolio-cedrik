@@ -17,15 +17,17 @@ var htmlmin = require('gulp-htmlmin');
 var gulpPug = require('gulp-pug');
 var gulpIf = require('gulp-if');
 var uglify = require('gulp-uglify');
+var postcss = require('gulp-postcss');
+
 
 
 var env = process.env.NODE_ENV || 'development';
 
 var SOURCEPATHS = {
-  sassSource : 'src/scss/*.scss',
-  sassApp: 'src/scss/app.scss',
-  pugSource : 'src/templates/*.pug',
-  jsSource : 'src/js/main.js',
+  sassSource : 'src/scss/**/*.scss',
+  sassApp: 'src/scss/**/app.scss',
+  pugSource : 'src/templates/**/*.pug',
+  jsSource : 'src/js/**/*.js',
   imgSource : 'src/img/**'
 }
 var APPPATH ={
@@ -63,6 +65,9 @@ gulp.task('sass', function(){
 	}
 
 	return gulp.src(SOURCEPATHS.sassSource)
+		.pipe(postcss([
+			require('postcss-nested')
+		], {syntax: require('postcss-scss')}))
 		.pipe(autoprefixer())
 		.pipe(sass(config).on('error', sass.logError))
 		.pipe(gulp.dest(APPPATH.css))

@@ -1,0 +1,26 @@
+/* COLORS */
+$grey: #928f90;
+$white: #ffffff;
+$black: #241f21;
+
+/* FONT */
+$base: 16px;
+$roboto-mono: 'Roboto Mono', monospace;
+
+/* GRID */
+$grid-max-width: 1200px;
+
+$bg-color: $black;
+$text-color:  $grey;
+$text-color--white: $white;
+
+
+//grid & responsive - sass map
+$breakpoints: (
+    phone: 480px,
+    tablet: 768px,
+    desktop: 1024px
+);
+
+
+

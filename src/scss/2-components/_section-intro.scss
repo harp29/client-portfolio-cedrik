@@ -1,0 +1,32 @@
+.intro{
+  //padding: 3.75rem 0 6.25rem;
+  position: relative;
+  margin-top: 4.375rem;
+  height: 87vh;
+  @include display-flex-center;
+
+  .company{
+    position: relative;
+
+    .company__info{
+      width: 90%;
+
+      @media screen and (min-width: 1024px) {
+        width: 60%;
+      }
+
+      .designer-details{
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .scroll{
+    position: absolute;
+    bottom: 5%;
+
+    .scroll__text{
+      font-size: .6rem;
+    }
+  }
+}

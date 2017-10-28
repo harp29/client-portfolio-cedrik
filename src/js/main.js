@@ -1,5 +1,6 @@
+let loadAnimations = require("./modules/load-animations");
 
-var testOne = require('./modules/test');
+loadAnimations();
 
-testOne.test();
+
 

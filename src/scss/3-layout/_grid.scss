@@ -1,0 +1,6 @@
+@import "../1-base/variables";
+
+.container{
+  max-width: $grid-max-width;
+  margin: 0 auto;
+}

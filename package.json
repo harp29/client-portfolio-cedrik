@@ -1,14 +1,14 @@
 {
-  "name": "workflow",
+  "name": "",
   "version": "1.0.0",
-  "description": "My Web Workflow with NPM, SASS, Gulp, and more",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/harp29/Workflow.git"
+    "type": "",
+    "url": ""
   },
   "keywords": [
     "SASS",
@@ -19,9 +19,9 @@
   "author": "Harpreet Singh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/harp29/Workflow/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/harp29/Workflow#readme",
+  "homepage": "",
   "devDependencies": {
     "bootstrap": "^3.3.7",
     "browser-sync": "^2.18.11",
@@ -37,12 +37,15 @@
     "gulp-inject-partials": "^1.0.3",
     "gulp-minify": "^1.0.0",
     "gulp-newer": "^1.3.0",
+    "gulp-postcss": "^7.0.0",
     "gulp-pug": "^3.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "jquery": "^3.2.1",
     "merge-stream": "^1.0.1",
-    "mustache": "^2.3.0"
+    "mustache": "^2.3.0",
+    "postcss-nested": "^2.1.2",
+    "postcss-scss": "^1.0.2"
   }
 }

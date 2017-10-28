@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400');
+@import "../4-helpers/mixins";
+
+$heading-size-map: (
+   h1: 2.625rem,
+   h2: 1.7rem,
+);
+
+.text{
+  @include text(2px, 125%, 0px);
+}
+
+.text--italic{
+  font-style: italic;
+}
+
+.text--uppercase{
+  text-transform: uppercase;
+}
+

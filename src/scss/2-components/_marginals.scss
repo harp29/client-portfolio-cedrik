@@ -1,0 +1,48 @@
+footer, nav{
+  height: 4.375rem;
+  max-width: 75rem;
+  background-color: $bg-color;
+}
+
+nav{
+  width: 80%;
+  position:fixed;
+  z-index: 4;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border-bottom: 1px solid $text-color;
+
+  a{
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  a:first-child{
+    left: 0;
+  }
+
+  a:last-child{
+    right: 0;
+  }
+}
+
+footer{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  border-top: 1px solid $text-color;
+
+  a{
+    font-size: .7rem;
+    margin-right: 1.2rem;
+  }
+
+  a:last-child{
+    margin-right: 0;
+  }
+}
